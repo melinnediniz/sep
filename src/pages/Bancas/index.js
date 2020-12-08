@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { FiTrash2 } from 'react-icons/fi'
+import { FiChevronRight } from 'react-icons/fi'
 
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
@@ -10,17 +10,17 @@ import Main from '../../components/Main'
 import DataTable, {DataRow, DataItem } from '../../components/DataTable'
 import Table from '../../components/Table'
 import TableContent from '../../components/TableContent'
+import Title from '../../components/Title'
 
-import { Container, ButtonConfirm } from './styles'
+import { Container, ButtonConfirm, ButtonList } from './styles'
 
 
 const Bancas = ()=> {
   const history = useHistory();
 
-
-  function handleClickConfirButton(){
-    history.push("/cadastro-banca")
-  }
+    function handleClickConfirButton(){
+      history.push("/cadastro-banca")
+    }
 
     return (
       <Container>
@@ -30,10 +30,17 @@ const Bancas = ()=> {
             <li><Link to="/home">Tela Inicial</Link></li>
             <li><Link to="/bancas">Bancas</Link></li>
           </TreeBar>
+          <Title>Bancas</Title>
           <Main>
-            <ButtonConfirm onClick={handleClickConfirButton}>
-              Cadastrar banca
-            </ButtonConfirm>
+            <ButtonList>
+              <li>
+              <ButtonConfirm 
+                onClick={handleClickConfirButton}
+              >
+                Solicitar Nova Banca
+              </ButtonConfirm>
+              </li>
+            </ButtonList>
             <Table>
               <TableContent title="Bancas">
                 <DataTable 
@@ -49,6 +56,7 @@ const Bancas = ()=> {
                 ]}
                   isFullWidth={true}
                   isScrolled={true}
+                  hasHover={true}
                   hasBorder={false}
                 >
                   <DataRow>
@@ -65,10 +73,10 @@ const Bancas = ()=> {
                       </ul>
                     </DataItem>
                     <DataItem>Não</DataItem>
-                    <DataItem><FiTrash2 /></DataItem>
+                    <DataItem><FiChevronRight size={20} /></DataItem>
                   </DataRow>
                 </DataTable>
-              </TableContent>
+                </TableContent>
             </Table>
           </Main>
           <Footer />
